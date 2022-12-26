@@ -16,10 +16,11 @@ function App() {
   const [contacts, setContacts] = useState(() => {
     const localContacts = localStorage.getItem('contacts');
     if (localContacts !== null) {
-      return [...JSON.parse(localContacts)]
+      return [...JSON.parse(localContacts)];
     }
-    return defaultContacts
+    return defaultContacts;
   });
+
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
@@ -35,9 +36,7 @@ function App() {
   };
 
   const onChangeFilter = e => {
-    setFilter({
-      filter: e.target.value,
-    });
+    setFilter(e.currentTarget.value);
   };
 
   const getFilteredContacts = () => {
@@ -53,6 +52,7 @@ function App() {
   };
 
   const filteredContacts = getFilteredContacts(contacts, filter);
+  
   return (
     <AppStyled>
       <h2>Phonebook</h2>
